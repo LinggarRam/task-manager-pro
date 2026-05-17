@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import "./styles/App.css";
 
 function AppContent() {
+  // taskCount={pendingCount}
   return (
     <div className="app">
-      {/* <Navbar />*/}
+      <Navbar />
       <main className="main-content">
         <Routes>
           <Route />
