@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import {  ThemeProvider } from "./context/ThemeContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+// import Navbar from "./components/Navbar";
 import "./styles/App.css";
 
 function AppContent() {
-  // taskCount={pendingCount}
+
   return (
     <div className="app">
-      <Navbar />
+      {/* <Navbar taskCount={pendingCount}/>*/}
       <main className="main-content">
         <Routes>
           <Route />
@@ -26,7 +28,11 @@ function AppContent() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AppContent />
+      <ThemeProvider>
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
