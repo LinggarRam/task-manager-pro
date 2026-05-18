@@ -114,15 +114,15 @@ class Timer extends Component {
         <div className="timer-controls">
           {!isRunning ? (
             <button className="timer-btn start" onClick={this.start}>
-              Start
+              ▶ Start
             </button>
           ) : (
             <button className="timer-btn pause" onClick={this.pause}>
-              Pause
+              ⏸ Pause
             </button>
           )}
           <button className="timer-btn reset" onClick={this.reset}>
-            Reset
+            ↺ Reset
           </button>
         </div>
       </div>
