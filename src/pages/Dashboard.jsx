@@ -86,7 +86,7 @@ export default function Dashboard({ tasks, stats }) {
 
       <div className="dashboard-grid">
         <div className="dashboard-card">
-          <h3>📅⚙️🌙☀️✅ Upcoming Tasks</h3>
+          <h3>📅✅ Upcoming Tasks</h3>
           {upcomingTasks.length === 0 ? (
             <p className="empty-text">No Upcoming Tasks!</p>
           ) : (
