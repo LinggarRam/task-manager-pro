@@ -55,7 +55,7 @@ const TaskCard = memo(function TaskCard({ task, onToggle, onDelete, onEdit }) {
 
       <div className="task-card-actions">
         <button className="btn-edit" onClick={handleEdit} aria-label="Edit task">✏️</button>
-        <button className="btn-delte" onClick={handleDelete} aria-label="Delete task">🗑️</button>
+        <button className="btn-delete" onClick={handleDelete} aria-label="Delete task">🗑️</button>
       </div>
     </article>
   );

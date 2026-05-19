@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import TaskCard from "../components/TaskCard";
 import TaskForm from "../components/TaskForm";
 import useDebounce from "../hooks/useDebounce";
+import "../styles/Tasks.css";
 
 export default function Tasks({ tasks, onAdd, onToggle, onDelete, onUpdate, onClearCompleted }) {
   const [showForm, setShowForm] = useState(false);

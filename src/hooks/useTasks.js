@@ -9,10 +9,10 @@ const INITIAL_TASKS = [
     description: "Study useContext and createContext patterns",
     priority: "high",
     category: "learning",
-    useDate: "2026-05-20",
+    dueDate: "2026-05-20",
     completed: false,
     createdAt: new Date().toISOString(),
-    tags: ("react", "study"),
+    tags: ["react", "study"],
   },
   {
     id: "2",
@@ -20,10 +20,10 @@ const INITIAL_TASKS = [
     description: "Complete the Odin Project cart assignment",
     priority: "high",
     category: "project",
-    useDate: "2026-05-15",
+    dueDate: "2026-05-15",
     completed: true,
     createdAt: new Date().toISOString(),
-    tags: ("react", "project"),
+    tags: ["react", "project"],
   },
   {
     id: "3",
@@ -31,10 +31,10 @@ const INITIAL_TASKS = [
     description: "Build a todo app using useReducer instead of useState",
     priority: "medium",
     category: "learning",
-    useDate: "2026-05-25",
+    dueDate: "2026-05-25",
     completed: false,
     createdAt: new Date().toISOString(),
-    tags: ("react", "hooks"),
+    tags: ["react", "hooks"],
   },
 ];
 

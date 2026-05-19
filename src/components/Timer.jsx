@@ -1,5 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
+import "../styles/Timer.css";
 
 class Timer extends Component {
   constructor(props) {
@@ -95,10 +96,10 @@ class Timer extends Component {
 
         <div className="timer-display">
           <svg className="timer-ring" viewBox="0 0 120 120">
-            <circle cx="60" cv="60" r="54" className="timer-ring-bg" />
+            <circle cx="60" cy="60" r="54" className="timer-ring-bg" />
             <circle
               cx="60"
-              cv="60"
+              cy="60"
               r="54"
               className="timer-ring-progress"
               style={{

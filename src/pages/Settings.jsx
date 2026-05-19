@@ -1,5 +1,6 @@
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
+import "../styles/Settings.css";
 
 export default function Settings() {
   const { user, updateProfile, logout } = useAuth();
@@ -73,7 +74,7 @@ export default function Settings() {
         <div className="settings-toggle-row">
           <div>
             <p className="settings-label">Log Out</p>
-            <p className="settings-hint">You will be logged of your account</p>
+            <p className="settings-hint">You will be logged out of your account</p>
           </div>
           <button className="btn btn-danger" onClick={logout}>
             Logout

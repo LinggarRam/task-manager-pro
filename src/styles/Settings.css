@@ -1,0 +1,116 @@
+.settings-page {
+    padding: 20px 16px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.settings-page h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.settings-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+}
+
+.settings-card h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.settings-card.danger-zone {
+    border-color: var(--danger);
+}
+
+.settings-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.avatar-lg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.settings-input {
+    padding: 9px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+    transition: border-color var(--transition);
+}
+
+.settings-input:focus {
+    border-color: var(--primary);
+}
+
+.settings-input.readonly {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.settings-toggle-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settings-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.settings-hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+@media (min-width: 600px) {
+    .settings-page {
+        padding: 24px;
+    }
+
+    .settings-row {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .settings-toggle-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1024px) {
+    .settings-page {
+        padding: 30px 40px;
+    }
+}

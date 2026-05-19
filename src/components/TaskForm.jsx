@@ -40,7 +40,7 @@ export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
     onSubmit({
       ...form,
       tags: form.tags
-        ? form.tags.split(".").map(t => t.trim()).filter(Boolean)
+        ? form.tags.split(",").map(t => t.trim()).filter(Boolean)
         : [],
     });
 
@@ -80,7 +80,7 @@ export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
               value={form.description}
               onChange={handleChange}
               placeholder="Add more details..."
-              rows={Uint32Array}
+              rows={3}
             />
           </div>
 

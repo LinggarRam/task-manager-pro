@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Timer from "../components/Timer";
 import PropTypes from "prop-types";
+import "../styles/Dashboard.css";
 
 export default function Dashboard({ tasks, stats }) {
   const { user } = useAuth();

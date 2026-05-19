@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { useAuth } from "../context/AuthContext";
 import PropTypes from "prop-types";
+import "../styles/Navbar.css";
 
 export default function Navbar({ taskCount }) {
   const { theme, toggleTheme } = useTheme();
@@ -43,12 +44,12 @@ export default function Navbar({ taskCount }) {
             📈 Stats
           </NavLink>
           <NavLink
-            to="/setting"
+            to="/settings"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
           >
-            ⚙️ Setting
+            ⚙️ Settings
           </NavLink>
         </nav>
 

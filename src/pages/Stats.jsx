@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import PropTypes from "prop-types";
+import "../styles/Stats.css";
 
 export default function Stats({ tasks, stats }) {
   const categoryStats = useMemo(() => {
@@ -13,7 +14,7 @@ export default function Stats({ tasks, stats }) {
       if (task.completed) categories[task.category].completed++;
     });
 
-    return Object.ontries(categories).map(([name, data]) => ({
+    return Object.entries(categories).map(([name, data]) => ({
       name,
       ...data,
       rate: data.total ? Math.round((data.completed / data.total) * 100) : 0,
