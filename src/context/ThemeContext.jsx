@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useCallback } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -8,7 +9,7 @@ export function ThemeProvider({ children }) {
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  }, []);
+  }, [setTheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useCallback, useState } from "react";
 import PropTypes from "prop-types";
 
@@ -5,9 +6,9 @@ const AuthContext = createContext(null);
 
 const MOCK_USER = {
   id: "1",
-  name: "Linggar Ramadhan",
-  email: "moh.linggar@gmail.com",
-  avatar: "LR",
+  name: "Profile",
+  email: "profile@gmail.com",
+  avatar: "P",
   role: "developer",
   joinDate: "Maret 2026",
 };

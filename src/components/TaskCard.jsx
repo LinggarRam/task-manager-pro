@@ -8,19 +8,29 @@ const TaskCard = memo(function TaskCard({ task, onToggle, onDelete, onEdit }) {
     low: "#10b981",
   };
 
-  const isOverdue = task.dueDate && !task.completed && new Date(task.dueDate) < new Date();
+  const isOverdue =
+    task.dueDate && !task.completed && new Date(task.dueDate) < new Date();
 
-  const handleToggle = useCallback(() => onToggle(task.id), [task.id, onToggle]);
-  const handleDelete = useCallback(() => onDelete(task.id), [task.id, onDelete]);
+  const handleToggle = useCallback(
+    () => onToggle(task.id),
+    [task.id, onToggle],
+  );
+  const handleDelete = useCallback(
+    () => onDelete(task.id),
+    [task.id, onDelete],
+  );
   const handleEdit = useCallback(() => onEdit(task), [task, onEdit]);
 
   return (
-    <article className={`task-card ${task.completed ? "completed" : ""} ${isOverdue ? "overdue" : ""}`}>
+    <article
+      className={`task-card ${task.completed ? "completed" : ""} ${isOverdue ? "overdue" : ""}`}
+    >
       <div className="task-card-left">
         <button
           className={`task-checkbox ${task.completed ? "checked" : ""}`}
           onClick={handleToggle}
-          aria-label={task.completed ? "Mark incomplete" : "Mark complete"}>
+          aria-label={task.completed ? "Mark incomplete" : "Mark complete"}
+        >
           {task.completed && "✓"}
         </button>
       </div>
@@ -35,27 +45,43 @@ const TaskCard = memo(function TaskCard({ task, onToggle, onDelete, onEdit }) {
           />
         </div>
 
-        {task.description && (
-          <p className="task-desc">{task.description}</p>
-        )}
+        {task.description && <p className="task-desc">{task.description}</p>}
 
         <div className="task-meta">
           {task.dueDate && (
             <span className={`task-due ${isOverdue ? "overdue-text" : ""}`}>
-              📅 {new Date(task.dueDate).toLocalDateString("en-us", { month: "short", day: "numeric" })}
+              📅{" "}
+              {new Date(task.dueDate).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+              })}
               {isOverdue && " (Overdue!)"}
             </span>
           )}
           <span className="task-category">🏷️ {task.category}</span>
-          {task.tags?.map(tag => (
-            <span className="task-tag" key={tag}>#{tag}</span>
+          {task.tags?.map((tag) => (
+            <span className="task-tag" key={tag}>
+              #{tag}
+            </span>
           ))}
         </div>
       </div>
 
       <div className="task-card-actions">
-        <button className="btn-edit" onClick={handleEdit} aria-label="Edit task">✏️</button>
-        <button className="btn-delete" onClick={handleDelete} aria-label="Delete task">🗑️</button>
+        <button
+          className="btn-edit"
+          onClick={handleEdit}
+          aria-label="Edit task"
+        >
+          ✏️
+        </button>
+        <button
+          className="btn-delete"
+          onClick={handleDelete}
+          aria-label="Delete task"
+        >
+          🗑️
+        </button>
       </div>
     </article>
   );
@@ -63,7 +89,7 @@ const TaskCard = memo(function TaskCard({ task, onToggle, onDelete, onEdit }) {
 
 TaskCard.propTypes = {
   task: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     priority: PropTypes.oneOf(["high", "medium", "low"]).isRequired,

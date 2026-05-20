@@ -15,12 +15,6 @@ export default function Dashboard({ tasks, stats }) {
       .slice(0, 3);
   }, [tasks]);
 
-  const recentTasks = useMemo(() => {
-    return tasks
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-      .slice(0, 3);
-  }, [tasks]);
-
   const handleTimerComplete = (mode) => {
     console.log(`${mode} session complete`);
   };

@@ -1,36 +1,39 @@
-import {  useState, useEffect, useRef  } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
 
 export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
-  const [form, setForm] = useState({
-    title: "",
-    description: "",
-    priority: "medium",
-    category: "general",
-    dueDate: "",
-    tags: "",
-  });
-
-  const titleRef = useRef(null);
-
-  useEffect(() => {
+  const initialForm = useMemo(() => {
     if (editTask) {
-      setForm({
+      return {
         title: editTask.title,
         description: editTask.description || "",
         priority: editTask.priority,
         category: editTask.category,
         dueDate: editTask.dueDate || "",
         tags: editTask.tags?.join(", ") || "",
-      });
+      };
     }
-
-    titleRef.current?.focus();
+    return {
+      title: "",
+      description: "",
+      priority: "medium",
+      category: "general",
+      dueDate: "",
+      tags: "",
+    };
   }, [editTask]);
+
+  const [form, setForm] = useState(initialForm);
+
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    titleRef.current?.focus();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -40,11 +43,21 @@ export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
     onSubmit({
       ...form,
       tags: form.tags
-        ? form.tags.split(",").map(t => t.trim()).filter(Boolean)
+        ? form.tags
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean)
         : [],
     });
 
-    setForm({ title: "", description: "", priority: "medium", category: "general", dueDate: "", tags: "" });
+    setForm({
+      title: "",
+      description: "",
+      priority: "medium",
+      category: "general",
+      dueDate: "",
+      tags: "",
+    });
   };
 
   const isEditing = !!editTask;
@@ -54,7 +67,9 @@ export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
       <div className="task-form-card">
         <div className="task-form-header">
           <h2>{isEditing ? "✏️ Edit Task" : "➕ New Task"}</h2>
-          <button className="btn-close" onClick={onCancel} aria-label="Close">X</button>
+          <button className="btn-close" onClick={onCancel} aria-label="Close">
+            X
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className="task-form">
@@ -87,7 +102,12 @@ export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="priority">Priority</label>
-              <select id="priority" name="priority" value={form.priority} onChange={handleChange}>
+              <select
+                id="priority"
+                name="priority"
+                value={form.priority}
+                onChange={handleChange}
+              >
                 <option value="high">🔴 High</option>
                 <option value="medium">🟡 Medium</option>
                 <option value="low">🟢 Low</option>
@@ -96,7 +116,12 @@ export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
 
             <div className="form-group">
               <label htmlFor="category">Category</label>
-              <select id="category" name="category" value={form.category} onChange={handleChange}>
+              <select
+                id="category"
+                name="category"
+                value={form.category}
+                onChange={handleChange}
+              >
                 <option value="general">📌 General</option>
                 <option value="learning">📚 Learning</option>
                 <option value="project">💻 Project</option>
@@ -136,7 +161,11 @@ export default function TaskForm({ onSubmit, onCancel, editTask = null }) {
             <button type="submit" className="btn btn-primary">
               {isEditing ? "Save Changes" : "Add Task"}
             </button>
-            <button type="button" className="btn btn-outline" onClick={onCancel}>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={onCancel}
+            >
               Cancel
             </button>
           </div>

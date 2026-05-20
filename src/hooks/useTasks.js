@@ -45,7 +45,7 @@ const useTasks = () => {
 
   useEffect(() => {
     setStoredTasks(tasks);
-  }, [tasks]);
+  }, [tasks, setStoredTasks]);
 
   const addTask = useCallback((taskData) => {
     dispatch({ type: TASK_ACTIONS.ADD, payload: taskData });
@@ -67,23 +67,29 @@ const useTasks = () => {
     dispatch({ type: TASK_ACTIONS.CLEAR_COMPLETED });
   }, []);
 
-  const stats = useMemo(() => ({
-    total: tasks.length,
-    completed: tasks.filter(t => t.completed).length,
-    pending: tasks.filter(t => !t.completed).length,
-    highPriority: tasks.filter(t => t.priority === "high" && !t.completed).length,
-    overdue: tasks.filter(t => {
-      if (!t.dueDate || t.completed) return false;
-      return new Date(t.dueDate) < new Date();
-    }).length,
-    byCategory: tasks.reduce((acc, task) => {
-      acc[task.category] = (acc[task.category] || 0) + 1;
-      return acc;
-    }, {}),
-    completionRate: tasks.length
-      ? Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100)
-      : 0,
-  }), [tasks]);
+  const stats = useMemo(
+    () => ({
+      total: tasks.length,
+      completed: tasks.filter((t) => t.completed).length,
+      pending: tasks.filter((t) => !t.completed).length,
+      highPriority: tasks.filter((t) => t.priority === "high" && !t.completed)
+        .length,
+      overdue: tasks.filter((t) => {
+        if (!t.dueDate || t.completed) return false;
+        return new Date(t.dueDate) < new Date();
+      }).length,
+      byCategory: tasks.reduce((acc, task) => {
+        acc[task.category] = (acc[task.category] || 0) + 1;
+        return acc;
+      }, {}),
+      completionRate: tasks.length
+        ? Math.round(
+            (tasks.filter((t) => t.completed).length / tasks.length) * 100,
+          )
+        : 0,
+    }),
+    [tasks],
+  );
 
   return {
     tasks,
