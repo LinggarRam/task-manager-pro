@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
+import ThemeToggle from "./ThemeToggle";
 import { useAuth } from "../context/AuthContext";
 import PropTypes from "prop-types";
 import "../styles/Navbar.css";
 
 export default function Navbar({ taskCount }) {
-  const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
 
   return (
@@ -54,13 +53,7 @@ export default function Navbar({ taskCount }) {
         </nav>
 
         <div className="navbar-actions">
-          <button
-            className="btn-theme"
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-          >
-            {theme === "light" ? "🌙" : "☀️"}
-          </button>
+          <ThemeToggle />
           {user && (
             <div className="user-info">
               <div className="avatar">{user.avatar}</div>

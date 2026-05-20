@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useCallback } from "react";
+import PropTypes from "prop-types";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const ThemeContext = createContext(null);
@@ -19,6 +20,10 @@ export function ThemeProvider({ children }) {
     </ThemeContext.Provider>
   );
 }
+
+ThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
