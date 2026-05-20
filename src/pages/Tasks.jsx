@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import TaskCard from "../components/TaskCard";
 import TaskForm from "../components/TaskForm";
 import useDebounce from "../hooks/useDebounce";
+import FilterBar from "../components/FilterBar";
 import "../styles/Tasks.css";
 
 export default function Tasks({
@@ -111,28 +112,12 @@ export default function Tasks({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-
-        <div className="filter-group">
-          {["all", "active", "completed", "high", "overdue"].map((f) => (
-            <button
-              key={f}
-              className={`filter-btn ${filter === f ? "active" : ""}`}
-              onClick={() => setFilter(f)}
-            >
-              {f.charAt(0).toUpperCase() + f.slice(1)}
-            </button>
-          ))}
-        </div>
-
-        <select
-          className="sort-select"
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-        >
-          <option value="newest">Newest First</option>
-          <option value="dueDate">Due Date</option>
-          <option value="priority">Priority</option>
-        </select>
+        <FilterBar
+          filter={filter}
+          sortBy={sortBy}
+          onFilterChange={setFilter}
+          onSortChange={setSortBy}
+        />
       </div>
 
       {filteredTasks.length === 0 ? (
