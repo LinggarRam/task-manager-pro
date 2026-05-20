@@ -10,7 +10,7 @@ import useTasks from "./hooks/useTasks";
 import "./styles/App.css";
 
 function AppContent() {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, login } = useAuth();
   const {
     tasks,
     stats,
@@ -30,7 +30,7 @@ function AppContent() {
           <p>Your personal productivity dashboard</p>
           <button
             className="btn btn-primary"
-            onClick={() => window.location.reload()}
+            onClick={login}
           >
             Login Demo
           </button>

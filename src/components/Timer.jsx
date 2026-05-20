@@ -85,7 +85,7 @@ class Timer extends Component {
     const { secondsLeft, isRunning, mode } = this.state;
     const progress =
       mode === "work"
-        ? ((1500 - secondsLeft) / 1500) * 300
+        ? ((1500 - secondsLeft) / 1500) * 100
         : ((300 - secondsLeft) / 300) * 100;
 
     return (
