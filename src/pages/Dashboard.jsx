@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Timer from "../components/Timer";
+import StatsCard from "../components/StatsCard";
 import PropTypes from "prop-types";
 import "../styles/Dashboard.css";
 
@@ -36,34 +37,30 @@ export default function Dashboard({ tasks, stats }) {
       </div>
 
       <div className="stats-grid">
-        <div className="stat-grid total">
-          <span className="stat-icon">📋</span>
-          <div>
-            <p className="stat-label">Total Tasks</p>
-            <p className="stat-value">{stats.total}</p>
-          </div>
-        </div>
-        <div className="stat-grid completed">
-          <span className="stat-icon">✅</span>
-          <div>
-            <p className="stat-label">Completed</p>
-            <p className="stat-value">{stats.completed}</p>
-          </div>
-        </div>
-        <div className="stat-grid pending">
-          <span className="stat-icon">⏳</span>
-          <div>
-            <p className="stat-label">Pending</p>
-            <p className="stat-value">{stats.pending}</p>
-          </div>
-        </div>
-        <div className="stat-grid overdue">
-          <span className="stat-icon">⚠️</span>
-          <div>
-            <p className="stat-label">Overdue</p>
-            <p className="stat-value">{stats.overdue}</p>
-          </div>
-        </div>
+        <StatsCard
+          icon="📋"
+          label="Total Tasks"
+          value={stats.total}
+          variant="total"
+        />
+        <StatsCard
+          icon="✅"
+          label="Completed"
+          value={stats.completed}
+          variant="completed"
+        />
+        <StatsCard
+          icon="⏳"
+          label="Pending"
+          value={stats.pending}
+          variant="pending"
+        />
+        <StatsCard
+          icon="⚠️"
+          label="Overdue"
+          value={stats.overdue}
+          variant="overdue"
+        />
       </div>
 
       <div className="progress-section">
